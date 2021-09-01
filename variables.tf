@@ -35,3 +35,8 @@ variable "log_retention" {
   default     = 7
   description = "Specifies the number of days you want to retain log events in the specified log group"
 }
+
+variable "mail_s3_bucket_prefix" {
+  type = string
+  description = "s3 path where emails with verification link will be saved"
+}

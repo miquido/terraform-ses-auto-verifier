@@ -3,12 +3,13 @@ data "archive_file" "lambda" {
   type        = "zip"
   source_dir  = "${path.module}/auto_verifier_lambda"
   output_path = "${path.module}/verifier_lambda.zip"
+  output_file_mode = "0755"
 }
 
 resource "aws_lambda_function" "auto_verifier" {
   filename         = "${path.module}/verifier_lambda.zip"
-  function_name    = "auto-verifier"
-  description      = "ses-verifier"
+  function_name    = "${var.namespace}-${var.stage}-auto-verifier"
+  description      = "ses auto verifier"
   runtime          = "python3.8"
   role             = aws_iam_role.default.arn
   handler          = "main.lambda_handler"
@@ -23,7 +24,7 @@ resource "aws_lambda_function" "auto_verifier" {
 }
 
 resource "aws_iam_role" "default" {
-  name               = "auto-verifier"
+  name               = "${var.namespace}-${var.stage}-auto-verifier"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
   tags               = var.tags
 }
@@ -41,7 +42,7 @@ data "aws_iam_policy_document" "assume_role" {
 }
 
 resource "aws_iam_role_policy" "default" {
-  name   = "auto-verifier"
+  name   = "${var.namespace}-${var.stage}-auto-verifier"
   role   = aws_iam_role.default.name
   policy = data.aws_iam_policy_document.default.json
 }
@@ -71,7 +72,7 @@ data "aws_iam_policy_document" "default" {
 }
 
 resource "aws_cloudwatch_log_group" "default" {
-  name              = "/aws/lambda/auto-verifier"
+  name              = "/aws/lambda/${aws_lambda_function.auto_verifier.function_name}"
   retention_in_days = var.log_retention
 }
 
@@ -93,7 +94,7 @@ resource "aws_s3_bucket_notification" "bounce_mail" {
     id                  = "new_bounce"
     lambda_function_arn = aws_lambda_function.auto_verifier.arn
     events              = ["s3:ObjectCreated:*"]
-    filter_prefix       = "emails/bounces/showcase.miquido.cloud/"
+    filter_prefix       = var.mail_s3_bucket_prefix
     filter_suffix       = ""
   }
 
