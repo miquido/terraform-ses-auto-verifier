@@ -37,6 +37,6 @@ variable "log_retention" {
 }
 
 variable "mail_s3_bucket_prefix" {
-  type = string
+  type        = string
   description = "s3 path where emails with verification link will be saved"
 }

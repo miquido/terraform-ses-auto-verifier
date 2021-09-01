@@ -1,8 +1,8 @@
 
 data "archive_file" "lambda" {
-  type        = "zip"
-  source_dir  = "${path.module}/auto_verifier_lambda"
-  output_path = "${path.module}/verifier_lambda.zip"
+  type             = "zip"
+  source_dir       = "${path.module}/auto_verifier_lambda"
+  output_path      = "${path.module}/verifier_lambda.zip"
   output_file_mode = "0755"
 }
 
