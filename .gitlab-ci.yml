@@ -7,8 +7,10 @@ get-latest-terraform:
   extends: .get-latest-terraform
 
 unit-tests:
+
   image: python:3.9-buster
   script:
+    - cd auto_verifier_lambda
     - python -m unittest discover tests
   tags:
     - miquido

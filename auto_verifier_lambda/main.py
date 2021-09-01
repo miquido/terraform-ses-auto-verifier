@@ -9,7 +9,4 @@ def lambda_handler(event, context):
     ses_messages = s3_read_file.s3_read(s3_keys)
     links = find_verify_link.find_verify_link(ses_messages)
     for link in links:
-        print(link)
-        print(f'stripped = {link.strip()}')
-        res = requests.get(link.strip())
-        print(res.text)
+        requests.get(link.strip())

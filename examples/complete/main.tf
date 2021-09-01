@@ -1,7 +1,7 @@
-module terraform-ses-auto-verifier {
-  source = "../../"
+module "terraform-ses-auto-verifier" {
+  source     = "../../"
   bucket_arn = "arn::bucket"
-  bucket_id = "ses-bucket"
-  namespace = "super-project"
-  stage = "production"
+  bucket_id  = "ses-bucket"
+  namespace  = "super-project"
+  stage      = "production"
 }
