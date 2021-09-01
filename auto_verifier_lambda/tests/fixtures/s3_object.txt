@@ -1,0 +1,57 @@
+Return-Path: <0102017b9c0e50ec-bd75c0d1-1875-4ecb-9e5d-debc5c2133f9-000000@eu-west-1.amazonses.com>
+Received: from a1-98.smtp-out.eu-west-1.amazonses.com (a1-98.smtp-out.eu-west-1.amazonses.com [54.240.1.98])
+ by inbound-smtp.eu-west-1.amazonaws.com with SMTP id 63tmj41267bakrfdl5n0f7jfihqj48f4kp9s7v81
+ for noreply@showcase.miquido.cloud;
+ Tue, 31 Aug 2021 11:53:09 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of eu-west-1.amazonses.com designates 54.240.1.98 as permitted sender) client-ip=54.240.1.98; envelope-from=0102017b9c0e50ec-bd75c0d1-1875-4ecb-9e5d-debc5c2133f9-000000@eu-west-1.amazonses.com; helo=a1-98.smtp-out.eu-west-1.amazonses.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of eu-west-1.amazonses.com designates 54.240.1.98 as permitted sender) client-ip=54.240.1.98; envelope-from=0102017b9c0e50ec-bd75c0d1-1875-4ecb-9e5d-debc5c2133f9-000000@eu-west-1.amazonses.com; helo=a1-98.smtp-out.eu-west-1.amazonses.com;
+ dkim=pass header.i=@amazon.com;
+ dkim=pass header.i=@amazonses.com;
+ dmarc=pass header.from=amazon.com;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFIc21nbG5TMkVsWU9lNnlPRFFiRTNscDBxMGlNa3V6RCs3Y3Q3OUZRWUZDalNSdSt5YjRkZGVGVkZUZE1Dak5HM1pzUExXempxWHNCeVBSNUxRUDhRSUpBVkVXYzducEhmazdUdmJuWjFlWmxUemM3WjVYMHBUYTQzcllNN2dCUVp1cUdkUWJDRjNLK3RRRzd4RXA4RVlKRFZQWjhHL3Vxc3VKNWhkOXozUExObTl1UHUzenBFOTNLMmVDRWpTc3lQamh0cUFNRjdTbElqZUlSSGZ0elRyRjRBZFZJWktFVlBrbmJ2L1JlZVQ3UnN4QnJjZzhIT205TkFGUUhveFlKdytXL3BwTnZSOWFFRVlNcVVsUno4RHgvRVBLRldORlZrVnZlUyszaktqY0VZalZrVDd3NTFxaW1aejBicVNJWFI1Zng0VVBSRE1vemplaU5oTWJnbUQ0ZDcvMHRxamt5ZElRTWcxb0dNb2FBYkwzdE1taTdQYlFjS2U3d1cwcHVBPQ==
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=OlNytA9cGheAPXpi0y1kO+l/tBWt9SUEKZqWkvtdcph0s6fGzMTI4c/D55KH6tYanRaGdpygx798hN0evRpw7QsYJyWGu0ao+v+zB95D+Fci6EujrQGB9eToCaJXM6ha8fqFAjd3LrMhLKy2wZxFaV7SO1YH/Fp8kQMk4LxPrrQ=; c=relaxed/simple; s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1630410790; v=1; bh=mcxihVc6y4z/MLG1jPT8G3ZZXpI8QxX2bUexDY2iZn8=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ibpnrwgrbweb7fyixm4z35es6apvuedc; d=amazon.com; t=1630410789;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding;
+	bh=mcxihVc6y4z/MLG1jPT8G3ZZXpI8QxX2bUexDY2iZn8=;
+	b=lnVfebD4FyNys5Rah2/R6GsUhPSd86PIKP/PNt2Qb6PCkqlQ86gRWNVg/xWab2k0
+	UewwmeXlTMye0Vrij6rsfS35n6eS4kWzcvEglmOE40VeaKZMRWnD3QLNW04ycdnM0Ye
+	5CUOpxAI7plyvsF4UrfotVO1BQnJQfM6nsEvHAlk=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1630410789;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=mcxihVc6y4z/MLG1jPT8G3ZZXpI8QxX2bUexDY2iZn8=;
+	b=YUggqjsTNFBW5GkG8E+rZdYy0Q4rtzhoyl8glFtMlsuzaEbwmGuSnJf+qYIiqfKg
+	/q9Bhv9c+ZTgeVwEjA2vPD6hAzamnNTgqqG3ddHIHHiOXh9tYmYuM4LSjzG5kYokVVL
+	xBDzErjAq+bbBB+yDryeaNVEjL7ExIEkslF2TRqs=
+Date: Tue, 31 Aug 2021 11:53:09 +0000 (UTC)
+From: Amazon Web Services <no-reply-aws@amazon.com>
+To: noreply@showcase.miquido.cloud
+Message-ID: <0102017b9c0e50ec-bd75c0d1-1875-4ecb-9e5d-debc5c2133f9-000000@eu-west-1.amazonses.com>
+Subject: =?UTF-8?Q?Amazon_Web_Services_=E2=80=93_Email_Address_Verif?=
+ =?UTF-8?Q?ication_Request_in_region_Europe_(Ireland)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Feedback-ID: 1.eu-west-1.UIAUrMfbpGrxavqnRE0yoZrAUBI9C7GRNUx/kUDo6B4=:AmazonSES
+X-SES-Outgoing: 2021.08.31-54.240.1.98
+Custom-Header: Added by SES
+
+Dear Amazon Web Services Customer,
+
+We have received a request to authorize this email address for use with Amazon SES and Amazon Pinpoint in region Europe (Ireland). If you requested this verification, please go to the following URL to confirm that you are authorized to use this email address:
+
+https://email-verification.eu-west-1.amazonaws.com/?Context=497964514030&X-Amz-Date=20210831T115309Z&Identity.IdentityName=noreply%40showcase.miquido.cloud&X-Amz-Algorithm=AWS4-HMAC-SHA256&Identity.IdentityType=EmailAddress&X-Amz-SignedHeaders=host&X-Amz-Credential=AKIAIR3TZ2R6DJQ4TMAA%2F20210831%2Feu-west-1%2Fses%2Faws4_request&Operation=ConfirmVerification&Namespace=Bacon&X-Amz-Signature=5f0936557070c31f9a8cd97cf7133300b412035c2e4edde74cdbde29c0bda1ec
+
+Your request will not be processed unless you confirm the address using this URL. This link expires 24 hours after your original verification request.
+
+If you did NOT request to verify this email address, do not click on the link. Please note that many times, the situation isn't a phishing attempt, but either a misunderstanding of how to use our service, or someone setting up email-sending capabilities on your behalf as part of a legitimate service, but without having fully communicated the procedure first. If you are still concerned, please forward this notification to aws-email-domain-verification@amazon.com and let us know in the forward that you did not request the verification.
+
+To learn more about sending email from Amazon Web Services, please refer to the Amazon SES Developer Guide at http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html and Amazon Pinpoint Developer Guide at http://docs.aws.amazon.com/pinpoint/latest/userguide/welcome.html.
+
+Sincerely,
+
+The Amazon Web Services Team.

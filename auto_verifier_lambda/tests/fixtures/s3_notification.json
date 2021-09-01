@@ -1,0 +1,39 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "eu-west-1",
+      "eventTime": "2021-08-31T09:28:54.407Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "AWS:AIDAJ6K7DK6VAQXGPRIYC"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "10.81.109.196"
+      },
+      "responseElements": {
+        "x-amz-request-id": "VPX2DWTFDXR6R4EG",
+        "x-amz-id-2": "BmGWfl8G5dkDNkLnv9j6ieZIGJgsewrB2Kj7wSed7MolizYMKeqLgXCaKXnv87TzHpmKicbbG9fMAqELn81n3GcNWoue9Wgh"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "new_bounce",
+        "bucket": {
+          "name": "miquido-showcase-prod-ses-store",
+          "ownerIdentity": {
+            "principalId": "A312ANMGPOGZEN"
+          },
+          "arn": "arn:aws:s3:::miquido-showcase-prod-ses-store"
+        },
+        "object": {
+          "key": "emails/bounces/showcase.miquido.cloud/qf1vvob9ablb0pipag6s1ohi92kutulrukpq7781",
+          "size": 5456,
+          "eTag": "bcca99b52a0139f1a472df5c02d92fa2",
+          "versionId": "gAFblxIJSPUBveQ6ONBw2ws5lAr7ltNG",
+          "sequencer": "00612DF65E8CD1A13F"
+        }
+      }
+    }
+  ]
+}
