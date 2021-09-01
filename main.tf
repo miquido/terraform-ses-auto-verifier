@@ -1,23 +1,23 @@
 
 data "archive_file" "lambda" {
   type        = "zip"
-  source_dir = "${path.module}/auto_verifier_lambda"
+  source_dir  = "${path.module}/auto_verifier_lambda"
   output_path = "${path.module}/verifier_lambda.zip"
 }
 
-resource aws_lambda_function auto_verifier {
-  filename                       = "${path.module}/verifier_lambda.zip"
-  function_name                  = "auto-verifier"
-  description                    = "ses-verifier"
-  runtime                        = "python3.8"
-  role                           = aws_iam_role.default.arn
-  handler                        = "main.lambda_handler"
-  source_code_hash               = data.archive_file.lambda.output_base64sha256
-  tags                           = var.tags
+resource "aws_lambda_function" "auto_verifier" {
+  filename         = "${path.module}/verifier_lambda.zip"
+  function_name    = "auto-verifier"
+  description      = "ses-verifier"
+  runtime          = "python3.8"
+  role             = aws_iam_role.default.arn
+  handler          = "main.lambda_handler"
+  source_code_hash = data.archive_file.lambda.output_base64sha256
+  tags             = var.tags
 
   environment {
     variables = {
-      BUCKET        = var.bucket_id
+      BUCKET = var.bucket_id
     }
   }
 }
@@ -86,7 +86,7 @@ resource "aws_lambda_permission" "s3_notification" {
   source_arn     = var.bucket_arn
 }
 
-resource aws_s3_bucket_notification bounce_mail {
+resource "aws_s3_bucket_notification" "bounce_mail" {
   bucket = var.bucket_id
 
   lambda_function {
