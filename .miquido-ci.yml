@@ -1,0 +1,8 @@
+---
+# yaml-language-server: $schema=https://schema.miquido.dev
+
+ignored_metrics:
+  - static_analysis
+  - container_vulnerabilities
+  - dependencies_vulnerabilities
+  - integration_tests

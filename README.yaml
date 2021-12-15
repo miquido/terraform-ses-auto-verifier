@@ -1,0 +1,16 @@
+name: miquido-terraform-ses-auto-verifier
+repos:
+  gitlab: miquido/terraform/terraform-ses-auto-verifier
+badges: []
+related: []
+# description: ""
+# usage: |-
+#   ```hcl
+#   module {
+#     source = "git::ssh://git@gitlab.com/miquido/terraform/terraform-.git?ref=master"
+#     ...
+#   }
+#   ```
+include:
+  - "docs/terraform.md"
+  - "docs/targets.md"

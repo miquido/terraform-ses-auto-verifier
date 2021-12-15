@@ -1,20 +1,29 @@
 include:
-  - remote: 'https://raw.githubusercontent.com/miquido/gitlab-templates/1.3.43/workflow-default.yml'
-  - remote: 'https://raw.githubusercontent.com/miquido/gitlab-templates/1.3.43/terraform-toolkit.yml'
-  - remote: 'https://raw.githubusercontent.com/miquido/gitlab-templates/1.3.43/git-toolkit.yml'
+  - remote: 'https://raw.githubusercontent.com/miquido/gitlab-templates/1.3.53/workflow-default.yml'
+  - remote: 'https://raw.githubusercontent.com/miquido/gitlab-templates/1.3.53/terraform-toolkit.yml'
+  - remote: 'https://raw.githubusercontent.com/miquido/gitlab-templates/1.3.53/git-toolkit.yml'
+  - remote: "https://raw.githubusercontent.com/miquido/gitlab-templates/1.3.53/gitlab-toolkit.yml"
 
 get-latest-terraform:
   extends: .get-latest-terraform
 
 unit-tests:
-
   image: python:3.9-buster
   script:
+    - pip install coverage==6.0.1 unittest-xml-reporting==3.0.4
     - cd auto_verifier_lambda
-    - python -m unittest discover tests
+    - coverage run -m xmlrunner --output-file report.xml
+    - coverage report
+    - coverage xml
   tags:
     - miquido
     - docker
+  coverage: /^TOTAL.+?(\d+\%)$/
+  artifacts:
+    when: always
+    reports:
+      junit: auto_verifier_lambda/report.xml
+      cobertura: auto_verifier_lambda/coverage.xml
 
 check-formatting:
   extends: .check-formatting
@@ -23,6 +32,9 @@ validate:
   extends: .validate-terraform
   variables:
     ENVIRONMENTS: examples/complete
+
+miquido-ci-schema-validation:
+  extends: .miquido-ci-schema-validation
 
 bump-tag:
   extends: .bump_minor_tag
