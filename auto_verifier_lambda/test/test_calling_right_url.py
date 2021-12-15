@@ -14,7 +14,7 @@ class MockResponse:
 class MockS3Body:
     @staticmethod
     def read():
-        with open('tests/fixtures/s3_object.txt', 'r') as file:
+        with open('test/fixtures/s3_object.txt', 'r') as file:
             return file.read().encode('utf-8')
 
 
@@ -47,7 +47,7 @@ class MyTestCase(unittest.TestCase):
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_simple_increment(self, mock_get, mock_s3):
         os.environ['BUCKET'] = 'test-bucket'
-        with open('tests/fixtures/s3_notification.json', 'r') as file:
+        with open('test/fixtures/s3_notification.json', 'r') as file:
             s3_notification = file.read()
 
         json.loads(s3_notification)
