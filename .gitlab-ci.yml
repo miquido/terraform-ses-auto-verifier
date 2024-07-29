@@ -23,7 +23,9 @@ unit-tests:
     when: always
     reports:
       junit: auto_verifier_lambda/report.xml
-      cobertura: auto_verifier_lambda/coverage.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: auto_verifier_lambda/coverage.xml
 
 check-formatting:
   extends: .check-formatting
